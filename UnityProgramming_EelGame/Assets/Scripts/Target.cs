@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Target : MonoBehaviour
 {
-    public bool isElectricBattery;
-    public string color;
-    public int moveSpeed;
-    public int pointValue;
-    public bool isBurned;
+    public bool m_isElectricBattery;
+    public string m_color;
+    public int m_moveSpeed;
+    public int m_pointValue;
+    public bool m_isBurned;
 
 
 
@@ -24,21 +24,22 @@ public class Target : MonoBehaviour
     {
         int points = 0;
         //Checks if the color is the color wanted
-        if (color.Equals(colorWanted))
+        if (m_color.Equals(colorWanted))
         {
             //Checks if the battery is electric
-            if (isElectricBattery)
+            if (m_isElectricBattery)
             {
                 points=BlowUp();
             }
             else
             {
-                points = pointValue;
+                points = m_pointValue;
             }
         }
+        //Incorrect Color the points for a battery is taken out of the points
         else
         {
-            points = -pointValue;
+            points = -m_pointValue;
         }
         return points;
     }
