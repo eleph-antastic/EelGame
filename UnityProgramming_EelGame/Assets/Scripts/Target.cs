@@ -11,8 +11,7 @@ public class Target : MonoBehaviour
     public int m_moveSpeed;
     public int m_pointValue;
     public bool m_isBurned;
-    public bool m_isSpawned;
-    //public GameObject game;
+    public GameObject game;
 
 
     //Hit Method
@@ -50,11 +49,6 @@ public class Target : MonoBehaviour
         return points;
     }
 
-    public void setColor(string color)
-    {
-        m_color = color;
-    }
-
     //Deletes all Batteries on the Screen
     //Returns the points given
     int BlowUp()
@@ -67,6 +61,8 @@ public class Target : MonoBehaviour
     void OnMouseDown()
     {
         int points = Hit("Blue");
+        Debug.Log("Hit");
+        Debug.Log("Points: " + points);
     }
 
     //SetElectric()
@@ -80,9 +76,8 @@ public class Target : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
-        //Checks if active
-        //
+        
     }
 }
