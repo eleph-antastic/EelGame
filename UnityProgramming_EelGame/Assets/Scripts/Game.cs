@@ -54,7 +54,11 @@ public class Game : MonoBehaviour
 
     //Pooling
     public List<GameObject> pooledObjects;
+
+    //GameObject for the Red Battery
     public GameObject objectToPool;
+
+
     public int amountToPool;
 
 
@@ -94,18 +98,16 @@ public class Game : MonoBehaviour
 
         }
     }
-    //Spawns the level of batteries
-    //OR Spawns a battery with a random color
-    void SpawnBattery()
-    {
-        //Spawns all 5 colors of Batteries below the screen
-        //Or spawns one battery of a random color
-    }
-
     //Shoots the battery in a parabolic movement
     void launchBattery()
     {
         //Launches battery
+        Vector3 launchVector = new Vector3(Random.Range(-100,100),1000, 0);
+        launchVector.Normalize();
+        GameObject battery = GetPooledObject();
+        battery.SetActive(true);
+        Debug.Log(battery.GetComponent<Target>().m_color);
+        battery.GetComponent<Rigidbody>().AddForce(launchVector * 15000);
     }
 
     //Respawns all Dead Batteries
@@ -125,32 +127,49 @@ public class Game : MonoBehaviour
     //Starts new level making shots 0 and changing the num batteries, timers and the point multiplier 
     void startNewLevel()
     {
-        //Pooling idea
-        // Get amount to win
-        //The amount to pool is the number of colored batteries times the amount to win
-        // Meaning if you need 6 red batteries and there are 6 colors the pool will have 36 batteries
-        //This means we will need 6 loops one for each color
-        //Also while creating the pools we need to add in the chance for the electric battery
-
-
-
 
         //Make Pool of Objects
         pooledObjects = new List<GameObject>();
         GameObject tmp;
         for (int i = 0; i < amountToPool; ++i)
         {
-            tmp = Instantiate(objectToPool);
+            Vector3 spawnPoint = new Vector3(Random.Range(-900, 900), -650, -200);
+            //Pools Red Batteries
+            objectToPool.GetComponent<Target>().setColor("Red");
+            tmp = Instantiate(objectToPool, spawnPoint, objectToPool.transform.rotation);
+            tmp.SetActive(false);
+            pooledObjects.Add(tmp);
+            //Pools Blue Batteries
+            spawnPoint = new Vector3(Random.Range(-900, 900), -650, -200);
+            objectToPool.GetComponent<Target>().setColor("Blue");
+            tmp = Instantiate(objectToPool, spawnPoint, objectToPool.transform.rotation);
+            tmp.SetActive(false);
+            pooledObjects.Add(tmp);
+            //Pools Purple Batteries
+            spawnPoint = new Vector3(Random.Range(-900, 900), -650, -200);
+            objectToPool.GetComponent<Target>().setColor("Purple");
+            tmp = Instantiate(objectToPool, spawnPoint, objectToPool.transform.rotation);
+            tmp.SetActive(false);
+            pooledObjects.Add(tmp);
+            //Pools Yellow Batteries
+            spawnPoint = new Vector3(Random.Range(-900, 900), -650, -200);
+            objectToPool.GetComponent<Target>().setColor("Yellow");
+            tmp = Instantiate(objectToPool, spawnPoint, objectToPool.transform.rotation);
+            tmp.SetActive(false);
+            pooledObjects.Add(tmp);
+            //Pools Green Batteries
+            spawnPoint = new Vector3(Random.Range(-900, 900), -650, -200);
+            objectToPool.GetComponent<Target>().setColor("Green");
+            tmp = Instantiate(objectToPool, spawnPoint, objectToPool.transform.rotation);
             tmp.SetActive(false);
             pooledObjects.Add(tmp);
         }
-        //Amount of Pooled objects is numColors*numBatteries
 
     }
 
     public GameObject GetPooledObject()
     {
-        for(int i=0; i < amountToPool; ++i)
+        for(int i=0; i < amountToPool*5; ++i)
         {
             if(!pooledObjects[i].activeInHierarchy)
             {
@@ -165,14 +184,15 @@ public class Game : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
-
-        sendWave();
-        sendDragon();
+        startNewLevel();
+        for (int i = 0; i < 15; i++)
+        {
+            launchBattery();
+        }
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if(m_waveSpawned)
         {
@@ -196,5 +216,6 @@ public class Game : MonoBehaviour
                 m_dragonSpawned = false;
             }
         }
+
     }
 }
