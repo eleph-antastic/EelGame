@@ -10,36 +10,37 @@ public class petController : MonoBehaviour
     public float duckAmount;
 
     public bool atStart;
+    public Vector3 startPos;
+    public Vector3 jumpPos;
+    public Vector3 duckPos;
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        atStart = true;
+        startPos = player.transform.position;
+        jumpPos = new Vector3(player.transform.position.x, player.transform.position.y + jumpHeight, player.transform.position.z);
+        duckPos = new Vector3(player.transform.position.x, player.transform.position.y - duckAmount, player.transform.position.z);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("up") || Input.GetKeyDown(KeyCode.W) && atStart) //jumps up
+        if (Input.GetKeyDown("up") || Input.GetKeyDown(KeyCode.W) && !Input.GetKey("down") && !Input.GetKey(KeyCode.S)) //jumps up
         {
-            atStart = false;
-            player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y + jumpHeight, player.transform.position.z);
+            player.transform.position = jumpPos;
         }
-        else if (Input.GetKeyUp("up") || Input.GetKeyUp(KeyCode.W) && !atStart) //moves player back to start position
+        else if (Input.GetKeyUp("up") || Input.GetKeyUp(KeyCode.W) && !Input.GetKey("down") && !Input.GetKey(KeyCode.S)) //moves player back to start position
         {
-            player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y - jumpHeight, player.transform.position.z);
-            atStart = true;
+            player.transform.position = startPos;
         }
-        else if (Input.GetKeyDown("down") || Input.GetKeyDown(KeyCode.S) && atStart) //ducks down
+        else if (Input.GetKeyDown("down") || Input.GetKeyDown(KeyCode.S) && !Input.GetKey("up") && !Input.GetKey(KeyCode.W)) //ducks down
         {
-            atStart = false;
-            player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y - duckAmount, player.transform.position.z);
+            player.transform.position = duckPos;
         }
-        else if (Input.GetKeyUp("down") || Input.GetKeyUp(KeyCode.S) && !atStart) //moves player back to start position
+        else if (Input.GetKeyUp("down") || Input.GetKeyUp(KeyCode.S) && !Input.GetKey("up") && !Input.GetKey(KeyCode.W)) //moves player back to start position
         {
-            player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y + duckAmount, player.transform.position.z);
-            atStart = true;
+            player.transform.position = startPos;
         }
     }
 }
