@@ -15,7 +15,10 @@ public class enemyKill : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (Input.GetKeyDown("left")) //jumps up
+        {
+            livesManagerScript.GetComponent<LivesManager>().hit = true;
+        }
     }
 
     private void OnCollisionEnter(Collision other)

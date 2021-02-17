@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4951909525574931344}
   - component: {fileID: 7424041595407615048}
   - component: {fileID: 3061503449450494758}
+  - component: {fileID: 2393506365681136079}
   m_Layer: 0
   m_Name: Dragon
   m_TagString: Untagged
@@ -95,3 +96,16 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2393506365681136079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6675787083279467406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8616c7cb41a1ca4c8a4a5712959c6b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  livesManagerScript: {fileID: 2306035544741962527, guid: c638b727ed42f7d4cb16ca6790f6beb0, type: 3}
