@@ -267,7 +267,7 @@ GameObject:
   - component: {fileID: 319185789}
   - component: {fileID: 319185788}
   - component: {fileID: 319185791}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EventSystem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1736,3 +1736,6 @@ MonoBehaviour:
   jumpHeight: 200
   duckAmount: 200
   atStart: 0
+  startPos: {x: 0, y: 0, z: 0}
+  jumpPos: {x: 0, y: 0, z: 0}
+  duckPos: {x: 0, y: 0, z: 0}

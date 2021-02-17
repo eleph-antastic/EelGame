@@ -4,15 +4,29 @@ using UnityEngine;
 
 public class LivesManager : MonoBehaviour
 {
+
+    public GameObject canvasHUD;
+    public AudioClip deathSound;
+    public bool hit = false;
+    public int Lives = 3;
+
     // Start is called before the first frame update
     void Start()
     {
         
     }
-
-    // Update is called once per frame
     void Update()
     {
-        
+        if (hit == true)
+        {
+            AudioSource.PlayClipAtPoint(deathSound, transform.position);
+            Lives -= 1;
+            hit = false;
+        }
+        if (Lives == 0)
+        {
+
+        }
     }
+
 }
