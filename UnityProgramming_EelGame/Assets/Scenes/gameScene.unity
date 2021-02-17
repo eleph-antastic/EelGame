@@ -1084,6 +1084,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Robot
       objectReference: {fileID: 0}
+    - target: {fileID: 1615490533568223720, guid: 5786a029a365ad2468f63baa4bef9516, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 1615490533568223724, guid: 5786a029a365ad2468f63baa4bef9516, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.6
@@ -1716,3 +1720,19 @@ MonoBehaviour:
   pooledObjects: []
   objectToPool: {fileID: 0}
   amountToPool: 0
+--- !u!114 &1968149531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1968149529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68826cbd516f9a64b971b167269914e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1968149529}
+  jumpHeight: 200
+  duckAmount: 200
+  atStart: 0
