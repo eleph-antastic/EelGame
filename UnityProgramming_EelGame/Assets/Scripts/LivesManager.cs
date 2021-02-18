@@ -6,6 +6,7 @@ public class LivesManager : MonoBehaviour
 {
 
     public AudioClip deathSound;
+    public AudioClip hurtSound;
     public bool hit = false;
     public int Lives = 3;
 
@@ -24,7 +25,8 @@ public class LivesManager : MonoBehaviour
     {
         if (hit == true)
         {
-            AudioSource.PlayClipAtPoint(deathSound, transform.position);
+            Debug.Log("hi");
+            AudioSource.PlayClipAtPoint(hurtSound, transform.position);
             Lives -= 1;
             hit = false;
             if (Lives == 2)
@@ -38,6 +40,7 @@ public class LivesManager : MonoBehaviour
         }
         if (Lives == 0)
         {
+            AudioSource.PlayClipAtPoint(deathSound, transform.position);
             life1.SetActive(false);
             loseScreen.SetActive(true);
             Time.timeScale = 0;

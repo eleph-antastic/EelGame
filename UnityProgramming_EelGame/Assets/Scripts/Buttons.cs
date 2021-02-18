@@ -6,11 +6,13 @@ using UnityEngine.SceneManagement;
 public class Buttons : MonoBehaviour
 {
     public GameObject pauseScreen;
+    public AudioClip paused;
 
     //When Clicking the Pause 
     public void pauseButton()
     {
         //pause game
+        AudioSource.PlayClipAtPoint(paused, transform.position);
         pauseScreen.SetActive(true);
         Time.timeScale = 0;
     }

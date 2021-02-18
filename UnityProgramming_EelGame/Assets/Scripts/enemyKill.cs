@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class enemyKill : MonoBehaviour
 {
-    public LivesManager livesManagerScript;
+    public GameObject livesManagerScript;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        livesManagerScript = GameObject.FindGameObjectWithTag("livesManager");
     }
 
     // Update is called once per frame

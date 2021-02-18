@@ -47,10 +47,12 @@ public class Game : MonoBehaviour
     private bool m_waveSpawned = false;
 
     private GameObject wave;
+    public AudioClip waveSpawnNoise;
 
     private bool m_dragonSpawned = false;
 
     private GameObject dragon;
+    public AudioClip dragonSpawnNoise;
 
     //Pooling
     public List<GameObject> pooledObjects;
@@ -79,7 +81,8 @@ public class Game : MonoBehaviour
             //Instantiates a wave object
             Vector3 pos = new Vector3(-1100, -400, -100);
             wave = Instantiate(m_wave, pos, m_wave.transform.rotation);
-            //Sends it across the screen
+            //Sends it across the screen and plays sound
+            AudioSource.PlayClipAtPoint(waveSpawnNoise, transform.position);
             m_waveSpawned = true;
         }
 
@@ -93,7 +96,8 @@ public class Game : MonoBehaviour
             //Instantiates a dragon object
             Vector3 pos = new Vector3(-1100, -200, -100);
             dragon = Instantiate(m_dragon, pos, m_wave.transform.rotation);
-            //Sends it across the screen
+            //Sends it across the screen and plays sound
+            AudioSource.PlayClipAtPoint(dragonSpawnNoise, transform.position);
             m_dragonSpawned = true;
 
         }
