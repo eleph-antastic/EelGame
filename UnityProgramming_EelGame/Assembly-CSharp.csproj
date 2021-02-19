@@ -62,6 +62,7 @@
     <Compile Include="Assets\Scripts\Buttons.cs" />
     <Compile Include="Assets\Scripts\MenuManager.cs" />
     <Compile Include="Assets\Scripts\petController.cs" />
+    <Compile Include="Assets\Scripts\instructionPanelScript.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\README.txt" />
