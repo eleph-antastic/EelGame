@@ -7,6 +7,7 @@ public class LivesManager : MonoBehaviour
 
     public AudioClip deathSound;
     public AudioClip hurtSound;
+    AudioSource audioPlayer;
     public bool hit = false;
     public int Lives = 3;
 
@@ -15,18 +16,20 @@ public class LivesManager : MonoBehaviour
     public GameObject life3;
 
     public GameObject loseScreen;
+    public GameObject pauseButtonImage;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        audioPlayer = GetComponent<AudioSource>();
     }
     void Update()
     {
         if (hit == true)
         {
-            Debug.Log("hi");
-            AudioSource.PlayClipAtPoint(hurtSound, transform.position);
+            Debug.Log("damaged");
+            audioPlayer.clip = hurtSound;
+            audioPlayer.Play();
             Lives -= 1;
             hit = false;
             if (Lives == 2)
@@ -40,10 +43,13 @@ public class LivesManager : MonoBehaviour
         }
         if (Lives == 0)
         {
-            AudioSource.PlayClipAtPoint(deathSound, transform.position);
+            audioPlayer.clip = deathSound;
+            audioPlayer.Play();
             life1.SetActive(false);
             loseScreen.SetActive(true);
+            pauseButtonImage.SetActive(false);
             Time.timeScale = 0;
+            Lives -= 1;
         }
     }
 

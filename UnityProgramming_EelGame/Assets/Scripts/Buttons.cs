@@ -10,6 +10,7 @@ public class Buttons : MonoBehaviour
     public AudioClip paused;
     public GameObject instructionPanel;
     public AudioClip beginMusic;
+    public GameObject pauseButtonImage; 
 
     void Start()
     {
@@ -25,6 +26,7 @@ public class Buttons : MonoBehaviour
         audioPlayer.volume = 0.5f;
         audioPlayer.Play();
         pauseScreen.SetActive(true);
+        pauseButtonImage.SetActive(false);
         Time.timeScale = 0;
     }
 
@@ -32,6 +34,7 @@ public class Buttons : MonoBehaviour
     {
         //resume from paused
         pauseScreen.SetActive(false);
+        pauseButtonImage.SetActive(true);
         Time.timeScale = 1;
     }
 
@@ -61,5 +64,6 @@ public class Buttons : MonoBehaviour
         Time.timeScale = 1;
         instructionPanel.SetActive(false);
         audioPlayer.Play();
+        pauseButtonImage.SetActive(true);
     }
 }
