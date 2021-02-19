@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LivesManager : MonoBehaviour
 {
@@ -17,6 +18,9 @@ public class LivesManager : MonoBehaviour
 
     public GameObject loseScreen;
     public GameObject pauseButtonImage;
+    public Text loseMessage;
+
+    public bool timerRanOut = false;
 
     // Start is called before the first frame update
     void Start()
@@ -45,8 +49,14 @@ public class LivesManager : MonoBehaviour
         {
             audioPlayer.clip = deathSound;
             audioPlayer.Play();
+            life3.SetActive(false);
+            life2.SetActive(false);
             life1.SetActive(false);
             loseScreen.SetActive(true);
+            if (timerRanOut)
+            {
+                loseMessage.text = "Time's Up! You Lose.";
+            }
             pauseButtonImage.SetActive(false);
             Time.timeScale = 0;
             Lives -= 1;
