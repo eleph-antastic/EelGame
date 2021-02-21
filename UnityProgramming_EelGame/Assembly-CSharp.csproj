@@ -55,14 +55,15 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\16.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\Target.cs" />
-    <Compile Include="Assets\Scripts\Game.cs" />
     <Compile Include="Assets\Scripts\LivesManager.cs" />
+    <Compile Include="Assets\Scripts\TimerScript.cs" />
     <Compile Include="Assets\Scripts\enemyKill.cs" />
     <Compile Include="Assets\Scripts\Buttons.cs" />
     <Compile Include="Assets\Scripts\MenuManager.cs" />
     <Compile Include="Assets\Scripts\petController.cs" />
-    <Compile Include="Assets\Scripts\TimerScript.cs" />
+    <Compile Include="Assets\Scripts\Level.cs" />
+    <Compile Include="Assets\Scripts\Game.cs" />
+    <Compile Include="Assets\Scripts\Target.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\README.txt" />

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using System.Runtime.InteropServices.ComTypes;
 using UnityEngine;
 
@@ -12,8 +13,11 @@ public class Target : MonoBehaviour
     public int m_pointValue;
     public bool m_isBurned;
     public bool m_isSpawned;
-    //public GameObject game;
-
+    public UnityEngine.Vector3 m_launchLocation;
+    public UnityEngine.Vector3 m_startPos;
+    public int m_arcHeight;
+    public GameObject m_game;
+    public GameObject m_level;
 
     //Hit Method
     //Runs when the Battery is clicked
@@ -38,7 +42,7 @@ public class Target : MonoBehaviour
             {
                 points = m_pointValue;
             }
-            //game.m_numBatteries--;
+            m_level.GetComponent<Level>().m_batteriesLeft--;
         }
         //Incorrect Color the points for a battery is taken out of the points
         else
@@ -46,7 +50,8 @@ public class Target : MonoBehaviour
             points = -m_pointValue;
         }
         //Destroys Object
-        Destroy(this.gameObject);
+        this.gameObject.SetActive(false);
+        m_isSpawned = true;
         return points;
     }
 
@@ -61,28 +66,40 @@ public class Target : MonoBehaviour
     {
         int points;
         //Get the number of batteries and multiply it by the pointValue
+
         points = 0;
         return points;
     }
     void OnMouseDown()
     {
-        int points = Hit("Blue");
+        m_game.GetComponent<Game>().m_numShots++;
+        m_game.GetComponent<Game>().m_levelScore += Hit(m_level.GetComponent<Level>().m_color);
+        Debug.Log("Points: "+m_game.GetComponent<Game>().m_levelScore);
     }
 
-    //SetElectric()
-    //SetColor()
+    void SetElectric(bool isElectric)
+    {
+        m_isElectricBattery = isElectric;
+    }
 
     
     // Start is called before the first frame update
     void Start()
     {
-        
+        m_startPos = transform.position;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        //Checks if active
-        //
+        float nextX = Mathf.MoveTowards(transform.position.x, m_launchLocation.x, m_moveSpeed * Time.deltaTime);
+
+        float nextY = Mathf.Lerp(m_startPos.y, m_launchLocation.y, (nextX - m_startPos.x) / (m_launchLocation.x - m_startPos.x));
+
+        float arc = m_arcHeight * (nextX - m_startPos.x) * (nextX - m_launchLocation.x) / (-0.25f * (m_launchLocation.x - m_startPos.x) * (m_launchLocation.x - m_startPos.x));
+
+        UnityEngine.Vector3 nextLocation = new UnityEngine.Vector3(nextX, nextY+arc,transform.position.z);
+
+        transform.position = nextLocation;
     }
 }
