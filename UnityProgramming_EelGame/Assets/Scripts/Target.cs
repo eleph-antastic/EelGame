@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Numerics;
 using System.Runtime.InteropServices.ComTypes;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Target : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class Target : MonoBehaviour
     public int m_arcHeight;
     public GameObject m_game;
     public GameObject m_level;
+
 
     //Hit Method
     //Runs when the Battery is clicked
@@ -43,7 +45,6 @@ public class Target : MonoBehaviour
                 points = m_pointValue;
             }
             m_level.GetComponent<Level>().m_batteriesLeft--;
-            m_level.GetComponent<Level>().updateObjective();
         }
         //Incorrect Color the points for a battery is taken out of the points
         else
@@ -75,6 +76,8 @@ public class Target : MonoBehaviour
     {
         m_game.GetComponent<Game>().m_numShots++;
         m_game.GetComponent<Game>().m_levelScore += Hit(m_level.GetComponent<Level>().m_color);
+        //Updates Score UI
+        //m_game.GetComponent<Game>().UpdateScore();
         Debug.Log("Points: "+m_game.GetComponent<Game>().m_levelScore);
     }
 

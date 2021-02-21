@@ -1075,8 +1075,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 78.1, y: 169.24127}
-  m_SizeDelta: {x: 120.1, y: 30}
+  m_AnchoredPosition: {x: 78.1, y: 171.8}
+  m_SizeDelta: {x: 116.1, y: 36.81}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &375551863
 MonoBehaviour:
@@ -1101,7 +1101,7 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 9
-    m_FontStyle: 0
+    m_FontStyle: 3
     m_BestFit: 0
     m_MinSize: 9
     m_MaxSize: 40
@@ -1374,6 +1374,10 @@ PrefabInstance:
       propertyPath: objectiveCount
       value: 
       objectReference: {fileID: 375551863}
+    - target: {fileID: 1482909456675750153, guid: d5a721634b54b8543b9debf1477587d0, type: 3}
+      propertyPath: objectiveUpdater
+      value: 
+      objectReference: {fileID: 920061316}
     - target: {fileID: 3378585660779591277, guid: d5a721634b54b8543b9debf1477587d0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2464,6 +2468,10 @@ PrefabInstance:
       propertyPath: objectiveTitle
       value: 
       objectReference: {fileID: 1205585488}
+    - target: {fileID: 6171838857791120143, guid: 350a8649d15e70d448fe1a7e990dbdd7, type: 3}
+      propertyPath: objectiveUpdating
+      value: 
+      objectReference: {fileID: 920061316}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 350a8649d15e70d448fe1a7e990dbdd7, type: 3}
 --- !u!1 &900424260
@@ -2541,6 +2549,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 900424260}
   m_CullTransparentMesh: 0
+--- !u!1 &920061316
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 920061317}
+  - component: {fileID: 920061318}
+  m_Layer: 0
+  m_Name: objectiveUpdates
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &920061317
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 920061316}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 85.73013, y: 36.53687, z: -950}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &920061318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 920061316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2967e848c03269c4c8e158c543231456, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreText: {fileID: 2117896627}
+  objectiveTitle: {fileID: 1205585488}
+  objectiveCount: {fileID: 375551863}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -2812,7 +2866,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 78.586914, y: 182.61014}
+  m_AnchoredPosition: {x: 78.586914, y: 185.71014}
   m_SizeDelta: {x: 116.32, y: 65.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1205585488
@@ -2838,7 +2892,7 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 13
-    m_FontStyle: 1
+    m_FontStyle: 2
     m_BestFit: 0
     m_MinSize: 9
     m_MaxSize: 40
@@ -4420,7 +4474,7 @@ GameObject:
   - component: {fileID: 2117896627}
   m_Layer: 5
   m_Name: scoreText
-  m_TagString: Untagged
+  m_TagString: scoreTag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4477,7 +4531,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Score: 94394738'
+  m_Text: 'text
+
+'
 --- !u!222 &2117896628
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -73,10 +73,9 @@ public class Game : MonoBehaviour
 
     public int amountToPool;
 
-    //UI aspects to update
-    public Text scoreText;
-    public Text objectiveTitle;
 
+    //GameObject that handles changing the text of score & objective
+    public GameObject objectiveUpdating;
 
     //Sends the wave attack across the screen
     void sendWave()
@@ -225,6 +224,8 @@ public class Game : MonoBehaviour
             if(m_level.GetComponent<Level>().m_batteriesLeft != 0)
             {
                 Debug.Log(m_level.GetComponent<Level>().m_batteriesLeft + " batteries left");
+                objectiveUpdating.GetComponent<objectiveUpdater>().UpdateObjective(m_level.GetComponent<Level>().m_batteriesLeft, m_level.GetComponent<Level>().m_numBatteries);
+                objectiveUpdating.GetComponent<objectiveUpdater>().UpdateScore(m_levelScore);
                 //Spawns the amount of batteries
                 launchBattery();
                 yield return new WaitForSeconds(m_level.GetComponent<Level>().m_batterySpawnTimer);
@@ -242,7 +243,7 @@ public class Game : MonoBehaviour
 
 
     }
-    void createLevel()
+    public void createLevel()
     {
         string[] colorList = { "Red", "Blue", "Purple", "Green", "Yellow" };
         m_levelScore = 0;
@@ -251,9 +252,13 @@ public class Game : MonoBehaviour
         int color = Random.Range(0, 5);
         //Changes level color
         m_level.GetComponent<Level>().m_color = colorList[color];
-        //Sets Objective Text
-        objectiveTitle.text = (m_level.GetComponent<Level>().m_numBatteries) + (m_level.GetComponent<Level>().m_color) + " Batteries";
         Debug.Log("Color: " + colorList[color]);
+
+        //Update UI
+        float batteriesTotal = m_level.GetComponent<Level>().m_batteriesLeft;
+        objectiveUpdating.GetComponent<objectiveUpdater>().UpdateObjective(batteriesTotal, batteriesTotal);
+        objectiveUpdating.GetComponent<objectiveUpdater>().UpdateScore(m_levelScore);
+        objectiveUpdating.GetComponent<objectiveUpdater>().UpdateObjectiveTitle(colorList[color], batteriesTotal);
     }
     //Runs through the level once(should run untill the num of batteries == 0 )
     // Start is called before the first frame update
@@ -266,7 +271,7 @@ public class Game : MonoBehaviour
         StartCoroutine(batteryLaunch());
     }
     // Update is called once per frame
-    void FixedUpdate()
+    public void FixedUpdate()
     {
 
         if (m_waveSpawned)
@@ -294,4 +299,5 @@ public class Game : MonoBehaviour
         
 
     }
+
 }
