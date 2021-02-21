@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Game : MonoBehaviour
 {
@@ -71,6 +72,10 @@ public class Game : MonoBehaviour
 
 
     public int amountToPool;
+
+    //UI aspects to update
+    public Text scoreText;
+    public Text objectiveTitle;
 
 
     //Sends the wave attack across the screen
@@ -246,6 +251,8 @@ public class Game : MonoBehaviour
         int color = Random.Range(0, 5);
         //Changes level color
         m_level.GetComponent<Level>().m_color = colorList[color];
+        //Sets Objective Text
+        objectiveTitle.text = (m_level.GetComponent<Level>().m_numBatteries) + (m_level.GetComponent<Level>().m_color) + " Batteries";
         Debug.Log("Color: " + colorList[color]);
     }
     //Runs through the level once(should run untill the num of batteries == 0 )

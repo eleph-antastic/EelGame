@@ -43,6 +43,7 @@ public class Target : MonoBehaviour
                 points = m_pointValue;
             }
             m_level.GetComponent<Level>().m_batteriesLeft--;
+            m_level.GetComponent<Level>().updateObjective();
         }
         //Incorrect Color the points for a battery is taken out of the points
         else
