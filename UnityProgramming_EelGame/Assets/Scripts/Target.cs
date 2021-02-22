@@ -38,11 +38,12 @@ public class Target : MonoBehaviour
             //Checks if the battery is electric
             if (m_isElectricBattery)
             {
+                Debug.Log("Electric");
                 points=BlowUp();
             }
             else
             {
-                points = m_pointValue;
+                points = m_pointValue * m_game.GetComponent<Game>().m_pointMultiplier;
             }
             m_level.GetComponent<Level>().m_batteriesLeft--;
         }
@@ -67,9 +68,8 @@ public class Target : MonoBehaviour
     int BlowUp()
     {
         int points;
-        //Get the number of batteries and multiply it by the pointValue
-
-        points = 0;
+        int batteries = m_game.GetComponent<Game>().blowUpBatteries();
+        points = m_pointValue* batteries * m_game.GetComponent<Game>().m_pointMultiplier;
         return points;
     }
     void OnMouseDown()
@@ -105,5 +105,10 @@ public class Target : MonoBehaviour
         UnityEngine.Vector3 nextLocation = new UnityEngine.Vector3(nextX, nextY+arc,transform.position.z);
 
         transform.position = nextLocation;
+        if(transform.position.y < -700)
+        {
+            this.gameObject.SetActive(false);
+            m_isSpawned = true;
+        }
     }
 }

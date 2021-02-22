@@ -128,11 +128,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_isElectricBattery: 0
   m_color: Blue
-  m_moveSpeed: 100
+  m_moveSpeed: 125
   m_pointValue: 10
   m_isBurned: 0
   m_isSpawned: 0
   m_launchLocation: {x: 0, y: 0, z: 0}
+  m_startPos: {x: 0, y: 0, z: 0}
   m_arcHeight: 900
   m_game: {fileID: 1008914538611266892, guid: 350a8649d15e70d448fe1a7e990dbdd7, type: 3}
   m_level: {fileID: 3378585660779591279, guid: d5a721634b54b8543b9debf1477587d0, type: 3}

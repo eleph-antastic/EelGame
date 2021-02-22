@@ -58,13 +58,13 @@
     <Compile Include="Assets\Scripts\Level.cs" />
     <Compile Include="Assets\Scripts\Game.cs" />
     <Compile Include="Assets\Scripts\Target.cs" />
+    <Compile Include="Assets\Scripts\objectiveUpdater.cs" />
     <Compile Include="Assets\Scripts\LivesManager.cs" />
     <Compile Include="Assets\Scripts\TimerScript.cs" />
     <Compile Include="Assets\Scripts\enemyKill.cs" />
     <Compile Include="Assets\Scripts\Buttons.cs" />
     <Compile Include="Assets\Scripts\MenuManager.cs" />
     <Compile Include="Assets\Scripts\petController.cs" />
-    <Compile Include="Assets\Scripts\objectiveUpdater.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\README.txt" />

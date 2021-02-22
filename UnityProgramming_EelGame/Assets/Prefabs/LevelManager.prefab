@@ -47,7 +47,9 @@ MonoBehaviour:
   m_batterySpawnTimer: 5
   m_attackTimer: 5
   m_shots: 0
-  m_color: Purple
+  m_color: Yellow
   m_numBatteries: 5
   m_pointMultiplier: 0.1
   m_batteriesLeft: 5
+  objectiveUpdater: {fileID: 249483100523407516, guid: b4f8d2da09dfdb44695e7af6efd9308c, type: 3}
+  pointsChanged: 0

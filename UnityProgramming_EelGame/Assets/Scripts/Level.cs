@@ -32,12 +32,12 @@ public class Level : MonoBehaviour
     }
     void Start()
     {
-        m_shots = 0;
-        m_batteriesLeft = 5;
-        m_batteriesLeft = m_numBatteries;
-        m_level = 1;
-        m_batterySpawnTimer = 4f;
-        m_attackTimer = 10f;
+        this.m_shots = 0;
+        this.m_batteriesLeft = 5;
+        this.m_batteriesLeft = m_numBatteries;
+        this.m_level = 1;
+        this.m_batterySpawnTimer = 5f;
+        this.m_attackTimer = 10f;
         objectiveUpdater.GetComponent<objectiveUpdater>().UpdateObjective(m_batteriesLeft, m_numBatteries);
     }
 }
