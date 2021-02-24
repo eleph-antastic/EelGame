@@ -18,6 +18,7 @@ public class Buttons : MonoBehaviour
         instructionPanel.SetActive(true);
         Time.timeScale = 0;
     }
+
     //When Clicking the Pause 
     public void pauseButton()
     {

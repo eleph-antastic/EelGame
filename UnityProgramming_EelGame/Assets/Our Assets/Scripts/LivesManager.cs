@@ -22,7 +22,7 @@ public class LivesManager : MonoBehaviour
 
     public bool timerRanOut = false;
 
-    // Start is called before the first frame update
+    // Start is called before the first frame update, sets audiplayer to the audioplayer on the object
     void Start()
     {
         audioPlayer = GetComponent<AudioSource>();

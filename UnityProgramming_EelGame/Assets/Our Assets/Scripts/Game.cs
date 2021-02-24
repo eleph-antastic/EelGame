@@ -97,6 +97,7 @@ public class Game : MonoBehaviour
         //Sends it across the screen
         m_dragonSpawned = true;
     }
+
     //Shoots the battery in a parabolic movement
     void launchBattery()
     {
