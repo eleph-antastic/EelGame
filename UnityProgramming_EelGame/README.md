@@ -1,6 +1,27 @@
-# EelGame
- Unity Programming Spring Semester 2021 
+Julia Sousa and Luke Driscoll
+2345424
+jsousa@chapman.edu
+CPSC245-01
+P1 Target Roast - Milestone 1
 
+Source Files:
+- Buttons
+- enemyKill
+- Game
+- Level
+- LivesManager
+- MenuManager
+- objectiveUpdater
+- petController
+- Target
+- TimerScript
 
+References:
 Audio Assets: https://themushroomkingdom.net/media/sm64/wav
 CountdownTimer Script: https://www.youtube.com/watch?v=ulxXGht5D2U&ab_channel=TurboMakesGames
+Charles Filce, filce@chapman.edu, 2287651
+
+Instructions:
+1) Open Unity Editor, Scene: MainMenu
+2) Press Play
+3) Read Instructions (listed again below) and click the Play Game button to continue
