@@ -10,12 +10,16 @@ public class objectiveUpdater : MonoBehaviour
     public Text scoreText;
     public Text objectiveTitle;
     public Text objectiveCount;
+    public Text levelText;
+
+    public AudioClip levelUpSound;
+    AudioSource audioPlayer;
 
 
     // Start is called before the first frame update
     void Start()
     {
-
+        audioPlayer = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -39,5 +43,15 @@ public class objectiveUpdater : MonoBehaviour
     public void UpdateScore(int newScore)
     {
         scoreText.text = "Score " + newScore;
+    }
+    public void UpdateLevel(int level)
+    {
+        if (level > 1)
+        {
+            audioPlayer.clip = levelUpSound;
+            audioPlayer.Play();
+        }
+        levelText.text = "Level: " + level.ToString();
+        Debug.Log("Updated level");
     }
 }

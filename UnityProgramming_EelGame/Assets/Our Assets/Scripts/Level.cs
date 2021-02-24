@@ -16,7 +16,6 @@ public class Level : MonoBehaviour
 
 
     public GameObject objectiveUpdater;
-    public bool pointsChanged = false;
 
 
     public void increaseLevel()
@@ -29,6 +28,7 @@ public class Level : MonoBehaviour
         m_attackTimer--;
         m_pointMultiplier += 0.1f;
         objectiveUpdater.GetComponent<objectiveUpdater>().UpdateObjective(m_batteriesLeft, m_numBatteries);
+        objectiveUpdater.GetComponent<objectiveUpdater>().UpdateLevel(m_level);
     }
     void Start()
     {
@@ -39,5 +39,6 @@ public class Level : MonoBehaviour
         this.m_batterySpawnTimer = 5f;
         this.m_attackTimer = 10f;
         objectiveUpdater.GetComponent<objectiveUpdater>().UpdateObjective(m_batteriesLeft, m_numBatteries);
+        objectiveUpdater.GetComponent<objectiveUpdater>().UpdateLevel(1);
     }
 }
