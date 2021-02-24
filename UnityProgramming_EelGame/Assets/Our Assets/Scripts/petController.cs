@@ -14,6 +14,8 @@ public class petController : MonoBehaviour
     public Vector3 jumpPos;
     public Vector3 duckPos;
 
+    public GameObject livesManage;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,4 +45,12 @@ public class petController : MonoBehaviour
             player.transform.position = startPos;
         }
     }
+    void OnCollissionEnter(Collision other)
+    {
+        if (other.gameObject.tag == "Enemy")
+        {
+            livesManage.GetComponent<LivesManager>().hit = true;
+        }
+    }
+
 }

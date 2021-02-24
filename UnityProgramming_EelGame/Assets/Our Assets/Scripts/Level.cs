@@ -39,6 +39,6 @@ public class Level : MonoBehaviour
         this.m_batterySpawnTimer = 5f;
         this.m_attackTimer = 10f;
         objectiveUpdater.GetComponent<objectiveUpdater>().UpdateObjective(m_batteriesLeft, m_numBatteries);
-        objectiveUpdater.GetComponent<objectiveUpdater>().UpdateLevel(1);
+s        objectiveUpdater.GetComponent<objectiveUpdater>().UpdateLevel(1);
     }
 }
