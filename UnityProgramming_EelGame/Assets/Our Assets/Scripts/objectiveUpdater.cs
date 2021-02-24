@@ -4,11 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 
 /*Julia Sousa & Luke Driscoll
- * 2345424
- * jsousa@chapman.edu
+ * 2345424 // 2344496
+ * jsousa@chapman.edu // ldriscoll@chapman.edu
  * CPSC245-01
  * P1 - Target Roast Milestone I
- * A script to update UI objects and text on screen, such as the objective, level, and score. 
+ * A script to update the UI components regarding the objective, score, and level
  * */
 
 public class objectiveUpdater : MonoBehaviour

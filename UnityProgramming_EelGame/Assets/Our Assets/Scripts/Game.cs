@@ -3,6 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
+/*Julia Sousa & Luke Driscoll
+ * 2345424 // 2344496
+ * jsousa@chapman.edu // ldriscoll@chapman.edu
+ * CPSC245-01
+ * P1 - Target Roast Milestone I
+ * 
+ * */
+
 public class Game : MonoBehaviour
 {
     //Class to deal with spawning the Batteries

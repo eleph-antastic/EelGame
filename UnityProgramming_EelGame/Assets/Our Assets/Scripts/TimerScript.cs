@@ -4,8 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 
 /*Julia Sousa & Luke Driscoll
- * 2345424
- * jsousa@chapman.edu
+ * 2345424 // 2344496
+ * jsousa@chapman.edu // ldriscoll@chapman.edu
  * CPSC245-01
  * P1 - Target Roast Milestone I
  * A script to keep track of the time in-game and to stop the game once the timer runs out. 
