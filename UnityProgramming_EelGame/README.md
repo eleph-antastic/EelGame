@@ -9,7 +9,6 @@ Source Files:
 - Game
 - Level
 - LivesManager
-- MenuManager
 - objectiveUpdater
 - petController
 - Target
