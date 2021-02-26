@@ -165,6 +165,8 @@ public class Game : MonoBehaviour
             pooledObjects[i].GetComponent<Target>().m_isSpawned = false;
             pooledObjects[i].transform.position = pooledObjects[i].GetComponent<Target>().m_startPos;
             pooledObjects[i].SetActive(false);
+            //Change the movement speed
+            pooledObjects[i].GetComponent<Target>().m_moveSpeed = (int)(pooledObjects[i].GetComponent<Target>().m_moveSpeed * m_level.GetComponent<Level>().m_batteryMoveSpeedModifier);
         }
     }
 
@@ -326,6 +328,12 @@ public class Game : MonoBehaviour
         int color = Random.Range(0, 5);
         //Changes level color
         m_level.GetComponent<Level>().m_color = colorList[color];
+        //Adds movementspeed to batteries
+        
+
+        //Adds movement speed to attacks
+        m_waveSpeed = (int)(m_waveSpeed * m_level.GetComponent<Level>().m_attackMoveSpeedModifier);
+        m_dragonSpeed = (int)(m_dragonSpeed * m_level.GetComponent<Level>().m_attackMoveSpeedModifier);
 
         //Update UI
         float batteriesTotal = m_level.GetComponent<Level>().m_batteriesLeft;
