@@ -63,7 +63,6 @@
     <Compile Include="Assets\Our Assets\Scripts\LivesManager.cs" />
     <Compile Include="Assets\Our Assets\Scripts\TimerScript.cs" />
     <Compile Include="Assets\Our Assets\Scripts\Buttons.cs" />
-    <Compile Include="Assets\Our Assets\Scripts\MenuManager.cs" />
     <Compile Include="Assets\Our Assets\Scripts\petController.cs" />
   </ItemGroup>
   <ItemGroup>

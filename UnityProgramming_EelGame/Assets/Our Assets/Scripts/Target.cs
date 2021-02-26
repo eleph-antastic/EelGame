@@ -8,16 +8,25 @@ using UnityEngine.UI;
 
 public class Target : MonoBehaviour
 {
+    //Variable to check if the battery is electric or not
     public bool m_isElectricBattery;
+    //Color of the battery
     public string m_color;
+    //Movement speed of the battery
     public int m_moveSpeed;
+    //Point value of the battery
     public int m_pointValue;
-    public bool m_isBurned;
+    //Checks if the battery is spawned
     public bool m_isSpawned;
+    //The location where the battery will be launched
     public UnityEngine.Vector3 m_launchLocation;
+    //The start position of the battery
     public UnityEngine.Vector3 m_startPos;
+    //The height of the arc of the battery
     public int m_arcHeight;
+    //GameObject to store the game manager
     public GameObject m_game;
+    //GameObject to store the level manager
     public GameObject m_level;
 
 
@@ -57,7 +66,7 @@ public class Target : MonoBehaviour
         m_isSpawned = true;
         return points;
     }
-
+    //Changes the color of the battery
     public void setColor(string color)
     {
         m_color = color;
@@ -72,6 +81,7 @@ public class Target : MonoBehaviour
         points = m_pointValue* batteries * m_game.GetComponent<Game>().m_pointMultiplier;
         return points;
     }
+    //When the target is clicked increase the shots add points and decrease the amount of batteries left
     void OnMouseDown()
     {
         m_game.GetComponent<Game>().m_numShots++;
@@ -80,7 +90,7 @@ public class Target : MonoBehaviour
         //m_game.GetComponent<Game>().UpdateScore();
         Debug.Log("Points: "+m_game.GetComponent<Game>().m_levelScore);
     }
-
+    //Changes the battery to electric
     void SetElectric(bool isElectric)
     {
         m_isElectricBattery = isElectric;
@@ -90,12 +100,12 @@ public class Target : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        m_startPos = transform.position;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+        //Makes the battery move in the arc
         float nextX = Mathf.MoveTowards(transform.position.x, m_launchLocation.x, m_moveSpeed * Time.deltaTime);
 
         float nextY = Mathf.Lerp(m_startPos.y, m_launchLocation.y, (nextX - m_startPos.x) / (m_launchLocation.x - m_startPos.x));

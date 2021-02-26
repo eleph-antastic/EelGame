@@ -18,10 +18,10 @@ public class Game : MonoBehaviour
     //Dealing with the point calculation
     //And spawning the attacks
 
-    //Score for the level
+    //Score for the game
     public int m_levelScore;
 
-    //Point multiplier for the level
+    //Point multiplier for the game
     public int m_pointMultiplier;
 
     //The percentage accuracy changes to total amount of points
@@ -48,20 +48,26 @@ public class Game : MonoBehaviour
     //The Speed of the dragon
     public int m_dragonSpeed;
 
+    //Boolean to see if the wave is spawned or no
     private bool m_waveSpawned = false;
 
+    //GameObject to hold the instantiated wave
     private GameObject wave;
 
+    //Boolean to see if the dragon is spawned or no
     private bool m_dragonSpawned = false;
 
+    //GameObject to hold the instantiated dragon
     private GameObject dragon;
 
+    //GameObject to store the levelmanager
     public GameObject m_level;
 
+    //GameObject to store the livesmanager
     public GameObject m_livesManager;
 
 
-    //Pooling
+    //List that is the pool of the batterys
     public List<GameObject> pooledObjects;
 
     //GameObject for the Red Battery
@@ -79,7 +85,7 @@ public class Game : MonoBehaviour
     //GameObject for the Purple Battery
     public GameObject purpleBattery;
 
-
+    //The amount of batteries to be pooled
     public int amountToPool;
 
 
@@ -89,11 +95,14 @@ public class Game : MonoBehaviour
     //Sends the wave attack across the screen
     void sendWave()
     {
-        //Instantiates a wave object
-        Vector3 pos = new Vector3(-1100, -400, -100);
-        wave = Instantiate(m_wave, pos, m_wave.transform.rotation);
-        //Sends it across the screen
-        m_waveSpawned = true;
+        if(m_waveSpawned ==false)
+        {
+            //Instantiates a wave object
+            Vector3 pos = new Vector3(-1100, -400, -100);
+            wave = Instantiate(m_wave, pos, m_wave.transform.rotation);
+            //Sends it across the screen
+            m_waveSpawned = true;
+        }
 
     }
 
@@ -112,7 +121,6 @@ public class Game : MonoBehaviour
     {
         GameObject battery = GetPooledObject();
 
-        //Launches battery
         Vector3 targetPos;
 
         if (battery.transform.position.x >= 0)
@@ -124,7 +132,7 @@ public class Game : MonoBehaviour
             targetPos = new Vector3(Random.Range(-150, 50), -750, -200);
         }
         battery.SetActive(true);
-        //Choose point slightly to right or left of Battery
+        //Choose point slightly to right or left of Battery to launch the battery
         battery.GetComponent<Target>().m_launchLocation = targetPos;
 
     }
@@ -136,6 +144,7 @@ public class Game : MonoBehaviour
         return (float)m_numBatteries/m_numShots;
     }
 
+    //Gets a battery that has not already been spawned and is not active
     public GameObject GetPooledObject()
     {
         for(int i=0; i < amountToPool; ++i)
@@ -148,6 +157,7 @@ public class Game : MonoBehaviour
         return null;
     }
 
+    //Resets all the batteries for the next level
     public void resetBatteries()
     {
         for (int i = 0; i < amountToPool; ++i)
@@ -157,6 +167,8 @@ public class Game : MonoBehaviour
             pooledObjects[i].SetActive(false);
         }
     }
+
+    //Gets all of the active batteries on the screen and returns the amount that were blown up
     public int blowUpBatteries()
     {
         int numBatteries = 0;
@@ -170,6 +182,8 @@ public class Game : MonoBehaviour
         }
         return numBatteries;
     }
+
+    //Creates the pool of the 5 different types of batteries
     public void createPool()
     {
         //Make Pool of Objects
@@ -179,7 +193,9 @@ public class Game : MonoBehaviour
         string[] colorList = { "Red", "Blue", "Purple", "Green", "Yellow" };
         for (int i = 0; i < amountToPool; ++i)
         {
+            //Randomize the color
             int color = Random.Range(0, 5);
+            //Randomize the Spawnpoint
             Vector3 spawnPoint = new Vector3(Random.Range(0, increment) + increment, -650, -200);
             //Electric Eel Random Change
             int electric = Random.Range(0, 100);
@@ -190,42 +206,51 @@ public class Game : MonoBehaviour
             {
                 redBattery.GetComponent<Target>().setColor(colorList[color]);
                 redBattery.GetComponent<Target>().m_isElectricBattery = isElectric;
+                redBattery.GetComponent<Target>().m_startPos = spawnPoint;
                 redBattery.GetComponent<Renderer>().sharedMaterial.color = Color.red;
                 tmp = Instantiate(redBattery, spawnPoint, redBattery.transform.rotation);
                 tmp.SetActive(false);
                 pooledObjects.Add(tmp);
             }
+            //Pools Blue Batteries
             else if (colorList[color] == "Blue")
             {
                 blueBattery.GetComponent<Target>().setColor(colorList[color]);
                 blueBattery.GetComponent<Target>().m_isElectricBattery = isElectric;
+                blueBattery.GetComponent<Target>().m_startPos = spawnPoint;
                 blueBattery.GetComponent<Renderer>().sharedMaterial.color = Color.blue;
                 tmp = Instantiate(blueBattery, spawnPoint, blueBattery.transform.rotation);
                 tmp.SetActive(false);
                 pooledObjects.Add(tmp);
             }
+            //Pools Green Batteries
             else if (colorList[color] == "Green")
             {
                 greenBattery.GetComponent<Target>().setColor(colorList[color]);
                 greenBattery.GetComponent<Target>().m_isElectricBattery = isElectric;
+                greenBattery.GetComponent<Target>().m_startPos = spawnPoint;
                 greenBattery.GetComponent<Renderer>().sharedMaterial.color = Color.green;
                 tmp = Instantiate(greenBattery, spawnPoint, greenBattery.transform.rotation);
                 tmp.SetActive(false);
                 pooledObjects.Add(tmp);
             }
+            //Pools Yellow Batteries
             else if (colorList[color] == "Yellow")
             {
                 yellowBattery.GetComponent<Target>().setColor(colorList[color]);
                 yellowBattery.GetComponent<Target>().m_isElectricBattery = isElectric;
+                yellowBattery.GetComponent<Target>().m_startPos = spawnPoint;
                 yellowBattery.GetComponent<Renderer>().sharedMaterial.color = Color.yellow;
                 tmp = Instantiate(yellowBattery, spawnPoint, yellowBattery.transform.rotation);
                 tmp.SetActive(false);
                 pooledObjects.Add(tmp);
             }
+            //Pools Purple Batteries
             else if (colorList[color] == "Purple")
             {
                 purpleBattery.GetComponent<Target>().setColor(colorList[color]);
                 purpleBattery.GetComponent<Target>().m_isElectricBattery = isElectric;
+                purpleBattery.GetComponent<Target>().m_startPos = spawnPoint;
                 purpleBattery.GetComponent<Renderer>().sharedMaterial.color = Color.magenta;
                 tmp = Instantiate(purpleBattery, spawnPoint, purpleBattery.transform.rotation);
                 tmp.SetActive(false);
@@ -235,18 +260,25 @@ public class Game : MonoBehaviour
         }
     }
 
-    public IEnumerator batteryLaunch()
+
+
+    //Runs the game
+    public IEnumerator runGame()
     {
+        //Runs until the code is either quit or the game is closed
         while (true)
         {
+            //Checks if there are batteries left
             if (m_level.GetComponent<Level>().m_batteriesLeft != 0)
             {
-                Debug.Log(m_level.GetComponent<Level>().m_batteriesLeft + " batteries left");
+                //Updates the ui
                 objectiveUpdating.GetComponent<objectiveUpdater>().UpdateObjective(m_level.GetComponent<Level>().m_batteriesLeft, m_level.GetComponent<Level>().m_numBatteries);
                 objectiveUpdating.GetComponent<objectiveUpdater>().UpdateScore(m_levelScore);
-                //Spawns the amount of batteries
+                //Spawns a battery
                 launchBattery();
+                //Waits for the battery to spawn
                 yield return new WaitForSeconds(m_level.GetComponent<Level>().m_batterySpawnTimer);
+                //Spawn the attacks
                 StartCoroutine(attackLaunch());
             }
             else if (m_level.GetComponent<Level>().m_batteriesLeft <= 0)
@@ -262,17 +294,22 @@ public class Game : MonoBehaviour
                 //Create new level
                 createLevel();
             }
+
         }
 
 
     }
+
+    //Launches the attacks
     public IEnumerator attackLaunch()
     {
+        //Spawns the wave
         if (m_level.GetComponent<Level>().m_level >= 2 && !m_waveSpawned)
         {
             yield return new WaitForSeconds(m_level.GetComponent<Level>().m_attackTimer);
             sendWave();
         }
+        //Spawns the dragon
         if (m_level.GetComponent<Level>().m_level >= 3 && !m_dragonSpawned)
         {
             yield return new WaitForSeconds(m_level.GetComponent<Level>().m_attackTimer);
@@ -280,6 +317,7 @@ public class Game : MonoBehaviour
         }
 
     }
+    //Creates the level
     public void createLevel()
     {
         string[] colorList = { "Red", "Blue", "Purple", "Green", "Yellow" };
@@ -288,7 +326,6 @@ public class Game : MonoBehaviour
         int color = Random.Range(0, 5);
         //Changes level color
         m_level.GetComponent<Level>().m_color = colorList[color];
-        Debug.Log("Color: " + colorList[color]);
 
         //Update UI
         float batteriesTotal = m_level.GetComponent<Level>().m_batteriesLeft;
@@ -304,12 +341,12 @@ public class Game : MonoBehaviour
         //Create the pool
         createPool();
         createLevel();
-        StartCoroutine(batteryLaunch());
+        StartCoroutine(runGame());
     }
     // Update is called once per frame
     public void FixedUpdate()
     {
-
+        //Checks if the wave is spawned
         if (m_waveSpawned)
         {
             //Move the wave across the screen
@@ -321,6 +358,7 @@ public class Game : MonoBehaviour
                 m_waveSpawned = false;
             }
         }
+        //Checks if the wave is spawned
         if (m_dragonSpawned)
         {
             //Move the wave across the screen

@@ -64,7 +64,7 @@ public class petController : MonoBehaviour
     }
 
     //Checks to see if Dragon or Wave have entered the collision box and access lives manager to lose a life and/or die
-    void OnCollissionEnter(Collision other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Enemy")
         {
