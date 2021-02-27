@@ -9,7 +9,7 @@ using UnityEngine.UI;
  * jsousa@chapman.edu // ldriscoll@chapman.edu
  * CPSC245-01
  * P1 - Target Roast Milestone I
- * 
+ * The main game script. Runs Update and manages level progression, attack launching, and pooling for batteries.
  * */
 
 public class Game : MonoBehaviour

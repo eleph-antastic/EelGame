@@ -6,6 +6,14 @@ using System.Runtime.InteropServices.ComTypes;
 using UnityEngine;
 using UnityEngine.UI;
 
+/*Julia Sousa & Luke Driscoll
+ * 2345424 // 2344496
+ * jsousa@chapman.edu // ldriscoll@chapman.edu
+ * CPSC245-01
+ * P1 - Target Roast Milestone I
+ * Battery script that works with the launching behavior and collection behavior
+ * */
+
 public class Target : MonoBehaviour
 {
     //Variable to check if the battery is electric or not
