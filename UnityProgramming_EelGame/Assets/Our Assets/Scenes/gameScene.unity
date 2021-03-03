@@ -1800,6 +1800,10 @@ PrefabInstance:
       propertyPath: m_batteriesLeft
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1482909456675750153, guid: d5a721634b54b8543b9debf1477587d0, type: 3}
+      propertyPath: timerObject
+      value: 
+      objectReference: {fileID: 93748439}
     - target: {fileID: 3378585660779591277, guid: d5a721634b54b8543b9debf1477587d0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

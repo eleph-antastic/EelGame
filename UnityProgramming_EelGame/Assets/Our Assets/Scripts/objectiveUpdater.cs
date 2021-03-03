@@ -80,8 +80,11 @@ public class objectiveUpdater : MonoBehaviour
         }
         levelText.text = "Level: " + level.ToString();
         Debug.Log("Updated level");
-        levelCompletedText.text = "Level " + (level - 1) + " Completed!";
-        levelCompleteScreen.SetActive(true);
-        Time.timeScale = 0;
+        if(level > 1)
+        {
+            levelCompletedText.text = "Level " + (level - 1) + " Completed!";
+            levelCompleteScreen.SetActive(true);
+            Time.timeScale = 0;
+        }
     }
 }
