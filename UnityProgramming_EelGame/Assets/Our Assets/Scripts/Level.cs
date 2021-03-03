@@ -40,6 +40,7 @@ public class Level : MonoBehaviour
     //The GameObject for the objective updater
     public GameObject objectiveUpdater;
 
+
     //Increases the level by modifing most of the attributes by making the spawn timers faster, amount of batteries up and the point multipier more
     public void increaseLevel()
     {
@@ -53,7 +54,7 @@ public class Level : MonoBehaviour
         m_attackMoveSpeedModifier += 0.1f;
         //Updates movespeed
 
-        //Updates Objective and Level texts on screen
+        //Updates Objective and Level texts on screen, pauses game
         objectiveUpdater.GetComponent<objectiveUpdater>().UpdateObjective(m_batteriesLeft, m_numBatteries);
         objectiveUpdater.GetComponent<objectiveUpdater>().UpdateLevel(m_level);
     }

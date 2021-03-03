@@ -33,6 +33,10 @@ public class objectiveUpdater : MonoBehaviour
     //audiosource that plays audio when progressing to next level
     AudioSource audioPlayer;
 
+    //Level Up Screen
+    public GameObject levelCompleteScreen;
+    //specific level completed text
+    public Text levelCompletedText;
 
     // Start is called before the first frame update, sets audiplayer to the audioplayer on the object
     void Start()
@@ -76,5 +80,8 @@ public class objectiveUpdater : MonoBehaviour
         }
         levelText.text = "Level: " + level.ToString();
         Debug.Log("Updated level");
+        levelCompletedText.text = "Level " + (level - 1) + " Completed!";
+        levelCompleteScreen.SetActive(true);
+        Time.timeScale = 0;
     }
 }

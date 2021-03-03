@@ -30,13 +30,18 @@ public class Buttons : MonoBehaviour
     public AudioClip beginMusic;
 
     //the pause button itself that disappears once the game is already paused or before it starts
-    public GameObject pauseButtonImage; 
+    public GameObject pauseButtonImage;
+
+    //Level Up Screen
+    public GameObject levelCompleteScreen;
+
 
     //Freezes the game to display instruction panel before the game starts
     void Start()
     {
         audioPlayer = GetComponent<AudioSource>();
         instructionPanel.SetActive(true);
+        levelCompleteScreen.SetActive(false);
         Time.timeScale = 0;
     }
 
@@ -58,6 +63,14 @@ public class Buttons : MonoBehaviour
         //resume from paused
         pauseScreen.SetActive(false);
         pauseButtonImage.SetActive(true);
+        Time.timeScale = 1;
+    }
+
+    //Resumes specifically after completing a level
+    public void nextLevelButton()
+    {
+        //resume from next level screen
+        levelCompleteScreen.SetActive(false);
         Time.timeScale = 1;
     }
 
