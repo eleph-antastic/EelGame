@@ -52,17 +52,23 @@ public class Target : MonoBehaviour
         //Checks if the color is the color wanted
         if (m_color.Equals(colorWanted))
         {
+            points = m_pointValue * m_game.GetComponent<Game>().m_pointMultiplier;
+            m_level.GetComponent<Level>().m_batteriesLeft--;
+        }
+        else if (m_color.Equals("Electric"))
+        {
             //Checks if the battery is electric
             if (m_isElectricBattery)
             {
-                Debug.Log("Electric");
-                points=BlowUp();
+                points = BlowUp();
+                points *= m_pointValue * m_game.GetComponent<Game>().m_pointMultiplier;
+                Debug.Log("Points Gained Electricuted: " + points);
             }
-            else
-            {
-                points = m_pointValue * m_game.GetComponent<Game>().m_pointMultiplier;
-            }
-            m_level.GetComponent<Level>().m_batteriesLeft--;
+        }
+        else if(m_color.Equals("White"))
+        {
+            points = m_pointValue * m_game.GetComponent<Game>().m_pointMultiplier;
+            Debug.Log("Bonus Battery Points gained: "+ points);
         }
         //Incorrect Color the points for a battery is taken out of the points
         else
@@ -86,7 +92,7 @@ public class Target : MonoBehaviour
     {
         int points;
         int batteries = m_game.GetComponent<Game>().blowUpBatteries();
-        points = m_pointValue* batteries * m_game.GetComponent<Game>().m_pointMultiplier;
+        points = (int)(m_pointValue * batteries * m_level.GetComponent<Level>().m_pointMultiplier);
         return points;
     }
     //When the target is clicked increase the shots add points and decrease the amount of batteries left

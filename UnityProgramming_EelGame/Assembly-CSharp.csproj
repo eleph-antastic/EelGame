@@ -57,13 +57,14 @@
   <ItemGroup>
     <Compile Include="Assets\Imported Assets\Blue Cartoon UI\Demo_Assets\scripts\GUI_Demo.cs" />
     <Compile Include="Assets\Our Assets\Scripts\Level.cs" />
-    <Compile Include="Assets\Our Assets\Scripts\Game.cs" />
     <Compile Include="Assets\Our Assets\Scripts\Target.cs" />
     <Compile Include="Assets\Our Assets\Scripts\objectiveUpdater.cs" />
     <Compile Include="Assets\Our Assets\Scripts\LivesManager.cs" />
     <Compile Include="Assets\Our Assets\Scripts\TimerScript.cs" />
     <Compile Include="Assets\Our Assets\Scripts\Buttons.cs" />
     <Compile Include="Assets\Our Assets\Scripts\petController.cs" />
+    <Compile Include="Assets\Our Assets\Scripts\Game.cs" />
+    <Compile Include="Assets\Our Assets\Scripts\Attack.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\Imported Assets\Robots\Robo3\Animations\Robo3 animations list.txt" />

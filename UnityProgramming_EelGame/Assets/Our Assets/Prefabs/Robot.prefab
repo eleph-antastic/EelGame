@@ -112,10 +112,10 @@ MonoBehaviour:
   player: {fileID: 1008914538611266892}
   jumpHeight: 200
   duckAmount: 200
-  atStart: 0
   startPos: {x: 0, y: 0, z: 0}
   jumpPos: {x: 0, y: 0, z: 0}
   duckPos: {x: 0, y: 0, z: 0}
+  livesManage: {fileID: 0}
 --- !u!114 &6171838857791120143
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125,24 +125,30 @@ MonoBehaviour:
   m_GameObject: {fileID: 1008914538611266892}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c2e7907b12e6d44ba0ad574ec260d18, type: 3}
+  m_Script: {fileID: 11500000, guid: 6db3161975ebe9b48915ea753c44af61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_levelScore: 0
-  m_pointMultiplier: 1
-  m_currLevel: 1
+  m_pointMultiplier: 0
+  m_currLevel: 0
   m_numBatteries: 0
   m_numShots: 0
-  m_wave: {fileID: 4679255396666818399, guid: 35513328cd941284ebb95efe6ac9da35, type: 3}
-  m_waveSpeed: 700
-  m_dragon: {fileID: 6675787083279467406, guid: a6a0dc657b15d0b43846ee346737a695, type: 3}
-  m_dragonSpeed: 700
-  m_level: {fileID: 3378585660779591279, guid: d5a721634b54b8543b9debf1477587d0, type: 3}
-  m_livesManager: {fileID: 7976095679511255855, guid: 6046b0f9e4153864cad64742e3495cab, type: 3}
+  m_wave: {fileID: 0}
+  m_waveSpeed: 900
+  m_dragon: {fileID: 0}
+  m_dragonSpeed: 900
+  m_waveSpawned: 0
+  m_dragonSpawned: 0
+  m_level: {fileID: 0}
+  m_livesManager: {fileID: 0}
+  batteriesPerWave: 0
   pooledObjects: []
-  redBattery: {fileID: 7455476548598672124, guid: 6d3be9833abf12148939481041ed7a91, type: 3}
-  blueBattery: {fileID: 7455476548598672124, guid: 7b9224d295b2af84bb311f1fc73111f5, type: 3}
-  greenBattery: {fileID: 7455476548598672124, guid: e4743753992a30b488e6210ef297cdbe, type: 3}
-  yellowBattery: {fileID: 7455476548598672124, guid: e1106f357ff56b944a3d5f5034a28feb, type: 3}
-  purpleBattery: {fileID: 7455476548598672124, guid: 867f2af883360044c848c2a72e6fbf34, type: 3}
-  amountToPool: 100
+  bonusPooledObjects: []
+  redBattery: {fileID: 0}
+  blueBattery: {fileID: 0}
+  greenBattery: {fileID: 0}
+  yellowBattery: {fileID: 0}
+  purpleBattery: {fileID: 0}
+  bonusBattery: {fileID: 0}
+  amountToPool: 0
+  objectiveUpdating: {fileID: 0}

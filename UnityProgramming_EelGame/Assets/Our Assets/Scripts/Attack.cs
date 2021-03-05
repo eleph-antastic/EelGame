@@ -1,0 +1,31 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Attack : MonoBehaviour
+{
+    public GameObject game;
+    public string attack;
+    public bool isSpawned;
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void FixedUpdate()
+    {
+        if(isSpawned)
+        {
+            //Move the wave across the screen
+            this.transform.Translate(game.GetComponent<Game>().m_dragonSpeed * Time.deltaTime, 0, 0);
+            //Checks if wave is Out of bounds if so deletes it
+            if (this.gameObject.transform.position.x >= 1100)
+            {
+                Destroy(this.gameObject.gameObject);
+                isSpawned = false;
+            }
+        }
+    }
+}

@@ -33,9 +33,9 @@ public class Level : MonoBehaviour
 
 
     //Modifier for the batteries movement speed
-    public float m_batteryMoveSpeedModifier;
+    public float m_batteryMoveSpeedModifier = 1;
     //Modifier for the Attacks movement speed
-    public float m_attackMoveSpeedModifier;
+    public float m_attackMoveSpeedModifier = 1 ;
 
     //The GameObject for the objective updater
     public GameObject objectiveUpdater;
@@ -52,8 +52,8 @@ public class Level : MonoBehaviour
         m_batterySpawnTimer -= 0.25f;
         m_attackTimer--;
         m_pointMultiplier += 0.1f;
-        m_batteryMoveSpeedModifier += 0.1f;
-        m_attackMoveSpeedModifier += 0.1f;
+        m_batteryMoveSpeedModifier += 0.01f;
+        m_attackMoveSpeedModifier += 0.01f;
         //Updates movespeed
         timerObject.GetComponent<TimerScript>().countdownTime = 60 * (m_level/2) + 20; //Resets timer, gives more time for harder levels
 
