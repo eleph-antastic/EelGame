@@ -106,6 +106,9 @@ public class Game : MonoBehaviour
     //GameObject that handles changing the text of score & objective
     public GameObject objectiveUpdating;
 
+    //bonus level text display
+    public GameObject bonusLevelText;
+
     //Sends the wave attack across the screen
     void sendWave()
     {
@@ -405,6 +408,7 @@ public class Game : MonoBehaviour
                 {
                     Debug.Log("Bonus Level");
                     //Starting Bonus Level
+                    bonusLevelText.SetActive(true);
                     int numBonusBatteries = m_level.GetComponent<Level>().m_level * 5;
                     for (int i = 0; i < numBonusBatteries; i++)
                     {
@@ -418,6 +422,8 @@ public class Game : MonoBehaviour
                 batteriesPerWave++;
                 //Reset all the batteries
                 resetBatteries();
+                //turns off bonus level display
+                bonusLevelText.SetActive(false);
                 //Create new level
                 createLevel();
             }
