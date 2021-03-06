@@ -192,6 +192,10 @@ public class Game : MonoBehaviour
     //Accuracy is batteries/shots
     float calcAccuracy()
     {
+        if(m_numShots == 0)
+        {
+            return 1;
+        }
         return m_level.GetComponent<Level>().m_numBatteries / m_numShots;
     }
 
@@ -376,7 +380,7 @@ public class Game : MonoBehaviour
         while (true)
         {
             //Checks if there are batteries left
-            if (m_level.GetComponent<Level>().m_batteriesLeft != 0)
+            if (m_level.GetComponent<Level>().m_batteriesLeft > 0) //changed this to > 0 because it went into negatives once
             {
                 //Updates the ui
                 objectiveUpdating.GetComponent<objectiveUpdater>().UpdateObjective(m_level.GetComponent<Level>().m_batteriesLeft, m_level.GetComponent<Level>().m_numBatteries);

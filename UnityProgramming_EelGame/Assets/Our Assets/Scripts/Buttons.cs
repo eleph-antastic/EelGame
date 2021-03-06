@@ -35,6 +35,13 @@ public class Buttons : MonoBehaviour
     //Level Up Screen
     public GameObject levelCompleteScreen;
 
+    //Warning Messages
+    //Wave Warning Message
+    public GameObject waveWarningText;
+    //Dragon Warning Message
+    public GameObject dragonWarningText;
+    //Electric Eel Warning Message
+    public GameObject electricEelWarningText;
 
     //Freezes the game to display instruction panel before the game starts
     void Start()
@@ -72,6 +79,9 @@ public class Buttons : MonoBehaviour
         //resume from next level screen
         levelCompleteScreen.SetActive(false);
         Time.timeScale = 1;
+        waveWarningText.SetActive(false);
+        dragonWarningText.SetActive(false);
+        electricEelWarningText.SetActive(false);
     }
 
     //returns to main menu and changes scenes

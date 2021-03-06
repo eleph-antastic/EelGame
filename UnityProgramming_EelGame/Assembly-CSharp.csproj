@@ -60,10 +60,10 @@
     <Compile Include="Assets\Our Assets\Scripts\Target.cs" />
     <Compile Include="Assets\Our Assets\Scripts\objectiveUpdater.cs" />
     <Compile Include="Assets\Our Assets\Scripts\LivesManager.cs" />
+    <Compile Include="Assets\Our Assets\Scripts\Game.cs" />
     <Compile Include="Assets\Our Assets\Scripts\TimerScript.cs" />
     <Compile Include="Assets\Our Assets\Scripts\Buttons.cs" />
     <Compile Include="Assets\Our Assets\Scripts\petController.cs" />
-    <Compile Include="Assets\Our Assets\Scripts\Game.cs" />
     <Compile Include="Assets\Our Assets\Scripts\Attack.cs" />
   </ItemGroup>
   <ItemGroup>

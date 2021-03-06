@@ -38,6 +38,14 @@ public class objectiveUpdater : MonoBehaviour
     //specific level completed text
     public Text levelCompletedText;
 
+    //Warning Messages
+    //Wave Warning Message
+    public GameObject waveWarningText;
+    //Dragon Warning Message
+    public GameObject dragonWarningText;
+    //Electric Eel Warning Message
+    public GameObject electricEelWarningText;
+
     // Start is called before the first frame update, sets audiplayer to the audioplayer on the object
     void Start()
     {
@@ -85,6 +93,18 @@ public class objectiveUpdater : MonoBehaviour
             levelCompletedText.text = "Level " + (level - 1) + " Completed!";
             levelCompleteScreen.SetActive(true);
             Time.timeScale = 0;
+        }
+        if (level == 3)
+        {
+            waveWarningText.SetActive(true);
+        }
+        if (level == 4)
+        {
+            dragonWarningText.SetActive(true);
+        }
+        if (level == 5)
+        {
+            electricEelWarningText.SetActive(true);
         }
     }
 }
