@@ -106,9 +106,6 @@ public class Game : MonoBehaviour
     //GameObject that handles changing the text of score & objective
     public GameObject objectiveUpdating;
 
-    //bonus level text display
-    public GameObject bonusLevelText;
-
     //Sends the wave attack across the screen
     void sendWave()
     {
@@ -195,10 +192,6 @@ public class Game : MonoBehaviour
     //Accuracy is batteries/shots
     float calcAccuracy()
     {
-        if(m_numShots == 0)
-        {
-            return 1;
-        }
         return m_level.GetComponent<Level>().m_numBatteries / m_numShots;
     }
 
@@ -302,7 +295,6 @@ public class Game : MonoBehaviour
             {
                 redBattery.GetComponent<Target>().setColor(colorList[color]);
                 redBattery.GetComponent<Target>().m_startPos = spawnPoint;
-                redBattery.GetComponent<Renderer>().sharedMaterial.color = Color.red;
                 tmp = Instantiate(redBattery, spawnPoint, redBattery.transform.rotation);
                 tmp.SetActive(false);
                 pooledObjects.Add(tmp);
@@ -312,7 +304,6 @@ public class Game : MonoBehaviour
             {
                 blueBattery.GetComponent<Target>().setColor(colorList[color]);
                 blueBattery.GetComponent<Target>().m_startPos = spawnPoint;
-                blueBattery.GetComponent<Renderer>().sharedMaterial.color = Color.blue;
                 tmp = Instantiate(blueBattery, spawnPoint, blueBattery.transform.rotation);
                 tmp.SetActive(false);
                 pooledObjects.Add(tmp);
@@ -322,7 +313,6 @@ public class Game : MonoBehaviour
             {
                 greenBattery.GetComponent<Target>().setColor(colorList[color]);
                 greenBattery.GetComponent<Target>().m_startPos = spawnPoint;
-                greenBattery.GetComponent<Renderer>().sharedMaterial.color = Color.green;
                 tmp = Instantiate(greenBattery, spawnPoint, greenBattery.transform.rotation);
                 tmp.SetActive(false);
                 pooledObjects.Add(tmp);
@@ -332,7 +322,6 @@ public class Game : MonoBehaviour
             {
                 yellowBattery.GetComponent<Target>().setColor(colorList[color]);
                 yellowBattery.GetComponent<Target>().m_startPos = spawnPoint;
-                yellowBattery.GetComponent<Renderer>().sharedMaterial.color = Color.yellow;
                 tmp = Instantiate(yellowBattery, spawnPoint, yellowBattery.transform.rotation);
                 tmp.SetActive(false);
                 pooledObjects.Add(tmp);
@@ -342,7 +331,6 @@ public class Game : MonoBehaviour
             {
                 purpleBattery.GetComponent<Target>().setColor(colorList[color]);
                 purpleBattery.GetComponent<Target>().m_startPos = spawnPoint;
-                purpleBattery.GetComponent<Renderer>().sharedMaterial.color = Color.magenta;
                 tmp = Instantiate(purpleBattery, spawnPoint, purpleBattery.transform.rotation);
                 tmp.SetActive(false);
                 pooledObjects.Add(tmp);
@@ -355,7 +343,6 @@ public class Game : MonoBehaviour
             bonusBattery.GetComponent<Target>().setColor("White");
             Vector3 spawnPoint = new Vector3(Random.Range(0, increment) + increment, -650, -200);
             bonusBattery.GetComponent<Target>().m_startPos = spawnPoint;
-            bonusBattery.GetComponent<Renderer>().sharedMaterial.color = Color.white;
             tmp = Instantiate(bonusBattery, spawnPoint, bonusBattery.transform.rotation);
             tmp.SetActive(false);
             bonusPooledObjects.Add(tmp);
@@ -367,7 +354,6 @@ public class Game : MonoBehaviour
             electricBattery.GetComponent<Target>().m_isElectricBattery = true;
             Vector3 spawnPoint = new Vector3(Random.Range(0, increment) + increment, -650, -200);
             electricBattery.GetComponent<Target>().m_startPos = spawnPoint;
-            electricBattery.GetComponent<Renderer>().sharedMaterial.color = Color.white;
             tmp = Instantiate(electricBattery, spawnPoint, electricBattery.transform.rotation);
             tmp.SetActive(false);
             electricPooledObjects.Add(tmp);
@@ -383,7 +369,7 @@ public class Game : MonoBehaviour
         while (true)
         {
             //Checks if there are batteries left
-            if (m_level.GetComponent<Level>().m_batteriesLeft > 0) //changed this to > 0 because it went into negatives once
+            if (m_level.GetComponent<Level>().m_batteriesLeft != 0)
             {
                 //Updates the ui
                 objectiveUpdating.GetComponent<objectiveUpdater>().UpdateObjective(m_level.GetComponent<Level>().m_batteriesLeft, m_level.GetComponent<Level>().m_numBatteries);
@@ -408,7 +394,6 @@ public class Game : MonoBehaviour
                 {
                     Debug.Log("Bonus Level");
                     //Starting Bonus Level
-                    bonusLevelText.SetActive(true);
                     int numBonusBatteries = m_level.GetComponent<Level>().m_level * 5;
                     for (int i = 0; i < numBonusBatteries; i++)
                     {
@@ -422,8 +407,6 @@ public class Game : MonoBehaviour
                 batteriesPerWave++;
                 //Reset all the batteries
                 resetBatteries();
-                //turns off bonus level display
-                bonusLevelText.SetActive(false);
                 //Create new level
                 createLevel();
             }
