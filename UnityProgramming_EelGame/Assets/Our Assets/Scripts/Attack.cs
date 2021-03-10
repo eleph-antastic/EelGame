@@ -21,7 +21,7 @@ public class Attack : MonoBehaviour
             //Move the wave across the screen
             this.transform.Translate(game.GetComponent<Game>().m_dragonSpeed * Time.deltaTime, 0, 0);
             //Checks if wave is Out of bounds if so deletes it
-            if (this.gameObject.transform.position.x >= 1100)
+            if (this.gameObject.transform.position.x >= 1400)
             {
                 Destroy(this.gameObject.gameObject);
                 isSpawned = false;
