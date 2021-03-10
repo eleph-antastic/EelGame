@@ -102,6 +102,8 @@ public class Game : MonoBehaviour
     //The amount of batteries to be pooled
     public int amountToPool;
 
+    //bonus level text display
+    public GameObject bonusLevelText;
 
     //GameObject that handles changing the text of score & objective
     public GameObject objectiveUpdating;
@@ -395,6 +397,7 @@ public class Game : MonoBehaviour
                     Debug.Log("Bonus Level");
                     //Starting Bonus Level
                     int numBonusBatteries = m_level.GetComponent<Level>().m_level * 5;
+                    bonusLevelText.SetActive(true);
                     for (int i = 0; i < numBonusBatteries; i++)
                     {
                         launchBonusBattery();
@@ -404,8 +407,10 @@ public class Game : MonoBehaviour
                 }
                 //Increase the level
                 m_level.GetComponent<Level>().increaseLevel();
+                bonusLevelText.SetActive(false);
                 batteriesPerWave++;
                 //Reset all the batteries
+
                 resetBatteries();
                 //Create new level
                 createLevel();
