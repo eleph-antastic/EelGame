@@ -17,8 +17,19 @@ Source Files:
 References:
 Audio Assets: https://themushroomkingdom.net/media/sm64/wav
 CountdownTimer Script: https://www.youtube.com/watch?v=ulxXGht5D2U&ab_channel=TurboMakesGames
+Robot Life Icon: https://loading.io/icon/5x35n5
 Charles Filce, filce@chapman.edu, 2287651
 Unity Documentation
+
+Robot Pet
+- Robot: https://assetstore.unity.com/packages/3d/characters/robots/tiny-robots-pack-98930
+Dragon Attack
+- Rocket: https://assetstore.unity.com/packages/3d/environments/sci-fi/lowpoly-spaceship-183012
+Wave Attack
+- Car: https://assetstore.unity.com/packages/3d/vehicles/land/free-sci-fi-car-184607
+Battery Collectibles
+- Different shaped batteries: https://assetstore.unity.com/packages/3d/environments/sci-fi/sci-fi-battery-pack-free-19738
+- More energy cells: https://assetstore.unity.com/packages/3d/environments/sci-fi/energy-cells-free-166830
 
 Instructions:
 1) Open Unity Editor, Scene: MainMenu
