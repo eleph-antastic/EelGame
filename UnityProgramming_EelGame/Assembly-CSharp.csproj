@@ -69,6 +69,7 @@
   <ItemGroup>
      <None Include="Assets\Imported Assets\Robots\Robo3\Animations\Robo3 animations list.txt" />
      <None Include="Assets\Imported Assets\Robots\Robo2\Animations\Robo2 animations list.txt" />
+     <None Include="Assets\Imported Assets\Monqo Sci-Fi Car\READ ME!.txt" />
      <None Include="Assets\Imported Assets\Robots\Readme.txt" />
      <None Include="Assets\Imported Assets\Robots\Standard Assets\Effects\ToonShading\Shaders\ToonBasic.shader" />
      <None Include="Assets\Imported Assets\Robots\Robo1\Animations\Robo1 animations list.txt" />
