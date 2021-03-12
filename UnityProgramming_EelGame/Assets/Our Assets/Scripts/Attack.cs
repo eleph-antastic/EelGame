@@ -25,6 +25,14 @@ public class Attack : MonoBehaviour
             {
                 Destroy(this.gameObject.gameObject);
                 isSpawned = false;
+                if(attack == "Wave")
+                {
+                    game.GetComponent<Game>().m_waveSpawned = false;
+                }
+                else if (attack == "Dragon")
+                {
+                    game.GetComponent<Game>().m_dragonSpawned = false;
+                }
             }
         }
     }

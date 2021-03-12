@@ -113,7 +113,7 @@ public class Game : MonoBehaviour
     {
         
         //Instantiates a wave object
-        Vector3 pos = new Vector3(-1400, -400, -100);
+        Vector3 pos = new Vector3(-1400, -163, -590);
         wave = Instantiate(m_wave, pos, m_wave.transform.rotation);
         wave.GetComponent<Attack>().isSpawned = true;
         //Sends it across the screen
@@ -125,7 +125,7 @@ public class Game : MonoBehaviour
     void sendDragon()
     {
         //Instantiates a dragon object
-        Vector3 pos = new Vector3(-1400, -200, -100);
+        Vector3 pos = new Vector3(-1400, -41.5f, -590);
         dragon = Instantiate(m_dragon, pos, m_wave.transform.rotation);
         dragon.GetComponent<Attack>().isSpawned = true;
         //Sends it across the screen
@@ -437,7 +437,7 @@ public class Game : MonoBehaviour
             sendDragon();
         }
         //Spawn the Electric Battery
-        if (m_level.GetComponent<Level>().m_level > 5)
+        if (m_level.GetComponent<Level>().m_level >= 5)
         {
             yield return new WaitForSeconds(m_level.GetComponent<Level>().m_attackTimer);
             launchElectricBattery();

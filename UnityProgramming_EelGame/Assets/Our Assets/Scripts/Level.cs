@@ -49,8 +49,14 @@ public class Level : MonoBehaviour
         m_level++;
         m_numBatteries += 2;
         m_batteriesLeft = m_numBatteries;
-        m_batterySpawnTimer -= 0.25f;
-        m_attackTimer--;
+        if(m_batterySpawnTimer > 2f)
+        {
+            m_batterySpawnTimer -= 0.25f;
+        }
+        if(m_attackTimer > 5f)
+        {
+            m_attackTimer--;
+        }
         m_pointMultiplier += 0.1f;
         m_batteryMoveSpeedModifier += 0.01f;
         m_attackMoveSpeedModifier += 0.01f;
