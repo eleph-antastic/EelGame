@@ -371,7 +371,7 @@ public class Game : MonoBehaviour
         while (true)
         {
             //Checks if there are batteries left
-            if (m_level.GetComponent<Level>().m_batteriesLeft != 0)
+            if (m_level.GetComponent<Level>().m_batteriesLeft > 0)
             {
                 //Updates the ui
                 objectiveUpdating.GetComponent<objectiveUpdater>().UpdateObjective(m_level.GetComponent<Level>().m_batteriesLeft, m_level.GetComponent<Level>().m_numBatteries);
@@ -479,30 +479,6 @@ public class Game : MonoBehaviour
     // Update is called once per frame
     public void FixedUpdate()
     {
-        /*//Checks if the wave is spawned
-        if (m_waveSpawned)
-        {
-            //Move the wave across the screen
-            wave.transform.Translate(m_waveSpeed * Time.deltaTime, 0, 0);
-            //Checks if wave is Out of bounds if so deletes it
-            if (wave.transform.position.x >= 1100)
-            {
-                Destroy(wave.gameObject);
-                m_waveSpawned = false;
-            }
-        }
-        //Checks if the wave is spawned
-        if (m_dragonSpawned)
-        {
-            //Move the wave across the screen
-            dragon.transform.Translate(m_dragonSpeed * Time.deltaTime, 0, 0);
-            //Checks if wave is Out of bounds if so deletes it
-            if (dragon.transform.position.x >= 1100)
-            {
-                Destroy(dragon.gameObject);
-                m_dragonSpawned = false;
-            }
-        }*/
     }
 
 }
