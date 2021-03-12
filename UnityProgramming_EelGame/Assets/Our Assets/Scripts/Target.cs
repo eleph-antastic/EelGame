@@ -63,6 +63,7 @@ public class Target : MonoBehaviour
                 points = BlowUp();
                 points *= m_pointValue * m_game.GetComponent<Game>().m_pointMultiplier;
                 Debug.Log("Points Gained Electricuted: " + points);
+                m_level.GetComponent<Level>().m_batteriesLeft -= m_game.GetComponent<Game>().correctBatteries;
             }
         }
         else if(m_color.Equals("White"))

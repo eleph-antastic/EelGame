@@ -24319,6 +24319,14 @@ PrefabInstance:
       propertyPath: objectiveUpdating
       value: 
       objectReference: {fileID: 920061316}
+    - target: {fileID: 6208552905739960697, guid: 32c19ad729a185f4484772776df84cb4, type: 3}
+      propertyPath: m_dragonSpeed
+      value: 800
+      objectReference: {fileID: 0}
+    - target: {fileID: 6208552905739960697, guid: 32c19ad729a185f4484772776df84cb4, type: 3}
+      propertyPath: m_waveSpeed
+      value: 800
+      objectReference: {fileID: 0}
     - target: {fileID: 6210347297360414069, guid: 32c19ad729a185f4484772776df84cb4, type: 3}
       propertyPath: m_Name
       value: Robo2

@@ -75,7 +75,7 @@ public class Level : MonoBehaviour
         this.m_batteriesLeft = m_numBatteries;
         this.m_level = 1;
         this.m_batterySpawnTimer = 5f;
-        this.m_attackTimer = 10f;
+        this.m_attackTimer = 20f;
         this.m_batteryMoveSpeedModifier = 1;
         this.m_attackMoveSpeedModifier = 1;
         //Updates Objective and Level texts on screen

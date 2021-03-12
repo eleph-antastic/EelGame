@@ -108,6 +108,9 @@ public class Game : MonoBehaviour
     //GameObject that handles changing the text of score & objective
     public GameObject objectiveUpdating;
 
+    //Amount of Correct Batteries stored for the electric blowup
+    public int correctBatteries;
+
     //Sends the wave attack across the screen
     void sendWave()
     {
@@ -175,7 +178,7 @@ public class Game : MonoBehaviour
         GameObject battery = GetElectricPooledObject();
 
         Vector3 targetPos;
-
+        Debug.Log("Launched Electric Battery");
         if (battery.transform.position.x >= 0)
         {
             targetPos = new Vector3(Random.Range(50, 150), -750, -200);
@@ -269,6 +272,10 @@ public class Game : MonoBehaviour
         {
             if (pooledObjects[i].activeInHierarchy)
             {
+                if(pooledObjects[i].GetComponent<Target>().m_color == m_level.GetComponent<Level>().m_color)
+                {
+                    correctBatteries++;
+                }
                 numBatteries++;
                 pooledObjects[i].SetActive(false);
                 pooledObjects[i].GetComponent<Target>().m_isSpawned = true;
@@ -367,6 +374,7 @@ public class Game : MonoBehaviour
     //Runs the game
     public IEnumerator runGame()
     {
+        bool attacking = true;
         //Runs until the code is either quit or the game is closed
         while (true)
         {
@@ -388,10 +396,15 @@ public class Game : MonoBehaviour
                 //Waits for the battery to spawn
                 yield return new WaitForSeconds(m_level.GetComponent<Level>().m_batterySpawnTimer);
                 //Spawn the attacks
-                StartCoroutine(attackLaunch());
+                if(attacking)
+                {
+                    StartCoroutine(attackLaunch());
+                    attacking = false;
+                }
             }
             else if (m_level.GetComponent<Level>().m_batteriesLeft <= 0)
             {
+                StopCoroutine(attackLaunch());
                 if (calcAccuracy() == 1)
                 {
                     Debug.Log("Bonus Level");
@@ -414,6 +427,7 @@ public class Game : MonoBehaviour
                 resetBatteries();
                 //Create new level
                 createLevel();
+                attacking = true;
             }
 
         }
@@ -424,24 +438,26 @@ public class Game : MonoBehaviour
     //Launches the attacks
     public IEnumerator attackLaunch()
     {
+        
         //Spawns the wave
         if (m_level.GetComponent<Level>().m_level > 2 && !m_waveSpawned)
         {
-            yield return new WaitForSeconds(m_level.GetComponent<Level>().m_attackTimer);
             sendWave();
+            yield return new WaitForSeconds(Random.Range(4f, 10f));
         }
         //Spawns the dragon
         if (m_level.GetComponent<Level>().m_level > 3 && !m_dragonSpawned)
         {
-            yield return new WaitForSeconds(m_level.GetComponent<Level>().m_attackTimer);
+            yield return new WaitForSeconds(Random.Range(4f,10f));
             sendDragon();
         }
         //Spawn the Electric Battery
         if (m_level.GetComponent<Level>().m_level >= 5)
-        {
-            yield return new WaitForSeconds(m_level.GetComponent<Level>().m_attackTimer);
+        {   
+            yield return new WaitForSeconds(Random.Range(1f, 7f));
             launchElectricBattery();
         }
+        yield return new WaitForSeconds(m_level.GetComponent<Level>().m_attackTimer);
 
     }
     //Creates the level
