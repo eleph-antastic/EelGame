@@ -35,6 +35,9 @@ public class Buttons : MonoBehaviour
     //Level Up Screen
     public GameObject levelCompleteScreen;
 
+    //accesses the player so can change the "isPaused" variable
+    public GameObject player;
+
     //Warning Messages
     //Wave Warning Message
     public GameObject waveWarningText;
@@ -61,6 +64,7 @@ public class Buttons : MonoBehaviour
         audioPlayer.Play();
         pauseScreen.SetActive(true);
         pauseButtonImage.SetActive(false);
+        player.GetComponent<petController>().isPaused = true;
         Time.timeScale = 0;
     }
 
@@ -70,6 +74,7 @@ public class Buttons : MonoBehaviour
         //resume from paused
         pauseScreen.SetActive(false);
         pauseButtonImage.SetActive(true);
+        player.GetComponent<petController>().isPaused = false;
         Time.timeScale = 1;
     }
 

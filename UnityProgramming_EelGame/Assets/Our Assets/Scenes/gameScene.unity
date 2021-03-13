@@ -3845,6 +3845,7 @@ MonoBehaviour:
   beginMusic: {fileID: 8300000, guid: 3302414104c1464458a2b434d97fcd5b, type: 3}
   pauseButtonImage: {fileID: 496498638}
   levelCompleteScreen: {fileID: 377655953}
+  player: {fileID: 338568309}
   waveWarningText: {fileID: 922390933}
   dragonWarningText: {fileID: 1677028092}
   electricEelWarningText: {fileID: 1857419906}

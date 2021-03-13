@@ -33,6 +33,9 @@ public class petController : MonoBehaviour
     //LivesManager object to access life count for when the player gets hit by a dragon or wave
     public GameObject livesManage;
 
+    //checks if game is paused
+    public bool isPaused;
+
     // Start is called before the first frame update, sets starting position, jumpheight and duckheight
     void Start()
     {
@@ -45,21 +48,24 @@ public class petController : MonoBehaviour
     // Update is called once per frame, checks to see if any keys are being pressed/let go by the player to move the robot character accordingly
     void Update()
     {
-        if (Input.GetKeyDown("up") || Input.GetKeyDown(KeyCode.W) && !Input.GetKey("down") && !Input.GetKey(KeyCode.S)) //jumps up
+        if (!isPaused) //makes sure the game isn't paused so the player doesn't move when game is paused
         {
-            player.transform.position = jumpPos;
-        }
-        else if (Input.GetKeyUp("up") || Input.GetKeyUp(KeyCode.W) && !Input.GetKey("down") && !Input.GetKey(KeyCode.S)) //moves player back to start position
-        {
-            player.transform.position = startPos;
-        }
-        else if (Input.GetKeyDown("down") || Input.GetKeyDown(KeyCode.S) && !Input.GetKey("up") && !Input.GetKey(KeyCode.W)) //ducks down
-        {
-            player.transform.position = duckPos;
-        }
-        else if (Input.GetKeyUp("down") || Input.GetKeyUp(KeyCode.S) && !Input.GetKey("up") && !Input.GetKey(KeyCode.W)) //moves player back to start position
-        {
-            player.transform.position = startPos;
+            if (Input.GetKeyDown("up") || Input.GetKeyDown(KeyCode.W) && !Input.GetKey("down") && !Input.GetKey(KeyCode.S)) //jumps up
+            {
+                player.transform.position = jumpPos;
+            }
+            else if (Input.GetKeyUp("up") || Input.GetKeyUp(KeyCode.W) && !Input.GetKey("down") && !Input.GetKey(KeyCode.S)) //moves player back to start position
+            {
+                player.transform.position = startPos;
+            }
+            else if (Input.GetKeyDown("down") || Input.GetKeyDown(KeyCode.S) && !Input.GetKey("up") && !Input.GetKey(KeyCode.W)) //ducks down
+            {
+                player.transform.position = duckPos;
+            }
+            else if (Input.GetKeyUp("down") || Input.GetKeyUp(KeyCode.S) && !Input.GetKey("up") && !Input.GetKey(KeyCode.W)) //moves player back to start position
+            {
+                player.transform.position = startPos;
+            }
         }
     }
 
