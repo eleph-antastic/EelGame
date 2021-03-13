@@ -38,3 +38,9 @@ Instructions:
 
 Click on the correct colored batteries to earn points. Click on the wrong ones and lose points.
 Jump (W or Up) to avoid the wave and Duck (S or Down) to avoid the dragon!
+
+
+
+Notes for Prate:
+
+We ended up having you hold the keys to move the character because we ran into a lot of scaling issues when we'd scale the character down to duck.
