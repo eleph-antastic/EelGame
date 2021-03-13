@@ -24402,6 +24402,10 @@ PrefabInstance:
       propertyPath: m_Center.x
       value: -0
       objectReference: {fileID: 0}
+    - target: {fileID: 1157298770529847558, guid: bfeb94556e7053c42afda59638200e60, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1157298770529847559, guid: bfeb94556e7053c42afda59638200e60, type: 3}
       propertyPath: game
       value: 
